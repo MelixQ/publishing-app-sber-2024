@@ -1,0 +1,718 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "API информационной системы издательства",
+      "description": "Выполнено: Кузнецов Максим Дмитриевич, РИМ-140950",
+      "version": "0.1.0"
+    },
+    "paths": {
+      "/api/v1/authors": {
+        "get": {
+          "tags": [
+            "Authors"
+          ],
+          "summary": "List Authors",
+          "operationId": "list_authors_api_v1_authors_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Authors"
+          ],
+          "summary": "Create Author",
+          "operationId": "create_author_api_v1_authors_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorCreateRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/authors/{author_id}": {
+        "get": {
+          "tags": [
+            "Authors"
+          ],
+          "summary": "Get Author",
+          "operationId": "get_author_api_v1_authors__author_id__get",
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Author Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "Authors"
+          ],
+          "summary": "Patch Author",
+          "operationId": "patch_author_api_v1_authors__author_id__patch",
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Author Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorUpdate"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Authors"
+          ],
+          "summary": "Delete Author",
+          "operationId": "delete_author_api_v1_authors__author_id__delete",
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Author Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/books": {
+        "get": {
+          "tags": [
+            "Books"
+          ],
+          "summary": "List Books",
+          "operationId": "list_books_api_v1_books_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Books"
+          ],
+          "summary": "Create Book",
+          "operationId": "create_book_api_v1_books_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookCreateRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/books/{book_id}": {
+        "get": {
+          "tags": [
+            "Books"
+          ],
+          "summary": "Get Book",
+          "operationId": "get_book_api_v1_books__book_id__get",
+          "parameters": [
+            {
+              "name": "book_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Book Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "Books"
+          ],
+          "summary": "Patch Book",
+          "operationId": "patch_book_api_v1_books__book_id__patch",
+          "parameters": [
+            {
+              "name": "book_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Book Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookUpdate"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Books"
+          ],
+          "summary": "Delete Book",
+          "operationId": "delete_book_api_v1_books__book_id__delete",
+          "parameters": [
+            {
+              "name": "book_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Book Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/application": {
+        "post": {
+          "tags": [
+            "Applications"
+          ],
+          "summary": "Submit Application",
+          "operationId": "submit_application_api_v1_application_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationCreateRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/": {
+        "get": {
+          "summary": "Root",
+          "description": "Homepage",
+          "operationId": "root__get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "ApplicationCreateRequest": {
+          "properties": {
+            "genre": {
+              "type": "string",
+              "title": "Genre"
+            },
+            "target_audience_age": {
+              "type": "integer",
+              "title": "Target Audience Age"
+            },
+            "is_18": {
+              "type": "boolean",
+              "title": "Is 18"
+            },
+            "full_name": {
+              "type": "string",
+              "title": "Full Name"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "title": "Email"
+            },
+            "phone": {
+              "type": "string",
+              "title": "Phone"
+            },
+            "social_networks": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Social Networks"
+            },
+            "submit_file_link": {
+              "type": "string",
+              "title": "Submit File Link"
+            }
+          },
+          "type": "object",
+          "required": [
+            "genre",
+            "target_audience_age",
+            "is_18",
+            "full_name",
+            "email",
+            "phone",
+            "social_networks",
+            "submit_file_link"
+          ],
+          "title": "ApplicationCreateRequest"
+        },
+        "AuthorCreateRequest": {
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "info": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Info"
+            },
+            "quotes": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Quotes"
+            }
+          },
+          "type": "object",
+          "required": [
+            "name",
+            "info",
+            "quotes"
+          ],
+          "title": "AuthorCreateRequest"
+        },
+        "AuthorUpdate": {
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "info": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Info"
+            },
+            "quotes": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Quotes"
+            }
+          },
+          "type": "object",
+          "title": "AuthorUpdate"
+        },
+        "BookCreateRequest": {
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "genre": {
+              "type": "string",
+              "title": "Genre"
+            },
+            "page_count": {
+              "type": "integer",
+              "title": "Page Count"
+            },
+            "store_link": {
+              "type": "string",
+              "title": "Store Link"
+            },
+            "picture": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Picture"
+            },
+            "author_id": {
+              "type": "integer",
+              "title": "Author Id"
+            }
+          },
+          "type": "object",
+          "required": [
+            "title",
+            "genre",
+            "page_count",
+            "store_link",
+            "picture",
+            "author_id"
+          ],
+          "title": "BookCreateRequest"
+        },
+        "BookUpdate": {
+          "properties": {
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Title"
+            },
+            "genre": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Genre"
+            },
+            "page_count": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Page Count"
+            },
+            "store_link": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Store Link"
+            },
+            "picture": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Picture"
+            }
+          },
+          "type": "object",
+          "title": "BookUpdate"
+        },
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "type": "array",
+              "title": "Detail"
+            }
+          },
+          "type": "object",
+          "title": "HTTPValidationError"
+        },
+        "ValidationError": {
+          "properties": {
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array",
+              "title": "Location"
+            },
+            "msg": {
+              "type": "string",
+              "title": "Message"
+            },
+            "type": {
+              "type": "string",
+              "title": "Error Type"
+            }
+          },
+          "type": "object",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError"
+        }
+      }
+    }
+  }
