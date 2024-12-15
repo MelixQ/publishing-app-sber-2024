@@ -30,4 +30,4 @@ def submit_application(
     session.add(new_application)
     session.commit()
     session.refresh(new_application)
-    return new_application
+    return {'Application submitted': True}
