@@ -1,23 +1,45 @@
-from typing import Optional
+from typing import Optional, List
+from models import BookBase, AuthorBase
 from pydantic import BaseModel, EmailStr
 
-class BookCreateRequest(BaseModel):
-    title: str
-    genre: str
-    page_count: int
-    store_link: str
-    picture: Optional[str]
 
-    author_id: int
+# Book schemas
+class BookCreate(BookBase):
+    author_system_uid: str
 
 
-class AuthorCreateRequest(BaseModel):
-    name: str
-    info: Optional[str]
-    quotes: Optional[str]
+class BookRead(BookBase):
+    system_uid: str
+    author_name: str
 
 
-class ApplicationCreateRequest(BaseModel):
+class BookUpdate(BaseModel):
+    title: Optional[str] = None
+    genre: Optional[str] = None
+    page_count: Optional[int] = None
+    store_link: Optional[str] = None
+    picture: Optional[str] = None
+    isbn: Optional[str] = None
+
+
+# Author schemas
+class AuthorCreate(AuthorBase):
+    pass 
+
+
+class AuthorRead(AuthorBase):
+    system_uid: str
+    books: List[BookRead] = []
+
+
+class AuthorUpdate(AuthorBase):
+    name: Optional[str] = None
+    info: Optional[str] = None
+    quote: Optional[str] = None
+
+
+# Application schema
+class ApplicationCreate(BaseModel):
     genre: str
     target_audience_age: int
     is_18: bool

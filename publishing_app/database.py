@@ -5,7 +5,7 @@ from sqlmodel import SQLModel, create_engine, Session
 
 load_dotenv()
 
-DB_URL =os.environ.get('DB_URL')
+DB_URL =os.environ.get('DB_URL', 'sqlite:///./publish_app.db')
 engine = create_engine(DB_URL)
 
 
