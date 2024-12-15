@@ -9,14 +9,12 @@
 
 `publishing_app/routers` - эндпоинты
 
-`app.py` - главная точка входа приложения
+`publishing_app/app.py` - главная точка входа приложения
 
-`database.py` - создание SQLModel engine, метод для дальнейшей DI сессии БД, метод запуска создания БД и таблиц
+`publishing_app/database.py` - создание SQLModel engine, метод для дальнейшей DI сессии БД, метод запуска создания БД и таблиц
 
-`models.py` - модели данных
+`publishing_app/models.py` - модели данных SQLModel
+
+`publishing_app/schemas.py` - модели данных для сериализации и обработки запросами
 
 `openapi_schema.json` - OpenAPI схема в виде отдельного файла
-
-`schemas.py` - pydantic модели данных
-
-`postgre_db.sql` - pg_dump PostgreSQL БД 
