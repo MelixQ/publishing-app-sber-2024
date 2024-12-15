@@ -1,45 +1,41 @@
-from __future__ import annotations
 from typing import Optional, List
 from sqlmodel import SQLModel, Field, Relationship
-from sqlalchemy.orm import Mapped, relationship
 
+# Base models
 class BookBase(SQLModel):
     title: str
     genre: str
     page_count: int
     store_link: str
     picture: Optional[str] = None
-
-
-class Book(BookBase, table=True):
-    id: int = Field(default=None, primary_key=True)
-    author: Mapped[Optional['Author']] = Relationship(sa_relationship=relationship(back_populates="books"))
-    author_id: int = Field(foreign_key="author.id")
-
-
-class BookUpdate(SQLModel):
-    title: str | None = None
-    genre: str | None = None
-    page_count: int | None = None
-    store_link: str | None = None
-    picture: Optional[str] | None = None
+    isbn: Optional[str] = None
 
 
 class AuthorBase(SQLModel):
     name: str
     info: Optional[str] = None
-    quotes: Optional[str] = None
+    quote: Optional[str] = None
+
+
+# Table models
+class Book(BookBase, table=True):
+    id: int = Field(default=None, primary_key=True)
+    system_uid: str = Field(index=True, unique=True)
+    author: "Author" = Relationship(back_populates="books") 
+    author_id: Optional[int] = Field(
+        default=None, 
+        foreign_key="author.id", 
+        ondelete="CASCADE"
+    )
 
 
 class Author(AuthorBase, table=True):
     id: int = Field(default=None, primary_key=True)
-    books: Mapped[List['Book']] = Relationship(sa_relationship=relationship(back_populates="author"))
-
-
-class AuthorUpdate(SQLModel):
-    name: str | None = None
-    info: str | None = None
-    quotes: Optional[str] | None = None
+    system_uid: str = Field(index=True, unique=True)
+    books: List["Book"] = Relationship(
+        back_populates="author", 
+        cascade_delete=True
+    )
 
 
 class Application(SQLModel, table=True):

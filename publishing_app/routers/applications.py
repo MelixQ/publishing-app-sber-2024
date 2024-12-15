@@ -1,6 +1,6 @@
-from __future__ import annotations
 from fastapi import APIRouter, HTTPException, Depends
-from schemas import ApplicationCreateRequest
+from schemas import ApplicationCreate
+from models import Application
 from database import get_session
 from sqlmodel import Session, select
 
@@ -9,12 +9,12 @@ router = APIRouter()
 
 @router.post("/api/v1/application")
 def submit_application(
-    request: ApplicationCreateRequest, 
+    application: ApplicationCreate, 
     session: Session = Depends(get_session)
 ):
     existing = session.exec(
         select(Application).where(
-            Application.email == request.email
+            Application.email == application.email
         )
     ).first()
     
@@ -25,20 +25,9 @@ def submit_application(
         )
 
     new_application = Application(
-        genre=request.genre,
-        target_audience_age=request.target_audience_age,
-        is_18=request.is_18,
-        full_name=request.full_name,
-        email=request.email,
-        phone=request.phone,
-        socials=request.social_networks,
-        submit_file_link=request.submit_file_link
+        **application.model_dump()
     )
     session.add(new_application)
     session.commit()
     session.refresh(new_application)
     return new_application
-
-
-from models import Application
-Application.model_rebuild()
