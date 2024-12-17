@@ -2,8 +2,8 @@
 #### Выполнил: Кузнецов Максим Дмитриевич, РИМ-140950 в рамках работы над предметом "Разработка приложений"
 
 Необходимые переменные окружения:
-- DB_URL=postgresql://{username}:{password}@localhost:5432/{db_name}
-- DOCS_URL=http://127.0.0.1:8000/docs
+- DB_URL=postgresql://{username}:{password}@localhost:5432/{db_name} - строка подключения базы данных
+- DOCS_URL=http://127.0.0.1:8000/docs - Swagger URL
 
 ### Структура
 
